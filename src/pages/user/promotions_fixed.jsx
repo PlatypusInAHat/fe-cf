@@ -89,7 +89,14 @@ export default function PromotionsPage() {
 
         {/* Search & Filter Section */}
         <Card className="p-6 mb-6 bg-card">
-          <div className="grid grid-cols-1 md) => setSearchKeyword(e.target.value)}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-2">Search</label>
+              <input
+                type="text"
+                placeholder="Search by cafe or promotion..."
+                value={searchKeyword}
+                onChange={(e) => setSearchKeyword(e.target.value)}
                 className="w-full px-4 py-2 border border-input rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>

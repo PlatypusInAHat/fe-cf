@@ -191,12 +191,22 @@ export default function CafeRegistrationPage() {
           ) : (
             requests.map((request) => (
               <Card key={request.id} className="p-6 bg-card">
-                <div className="grid grid-cols-1 md) => {
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                  <div className="col-span-2">
+                    <p className="font-semibold text-foreground">{request.caféName}</p>
+                    <p className="text-sm text-muted-foreground">{request.ownerName}</p>
+                  </div>
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={() => {
                       /* View details logic */
                     }}
                   >
                     View Details
                   </Button>
+                </div>
+                <div className="flex gap-3 mt-4">
                   <Button
                     className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90"
                     onClick={() => handleApprove(request.id)}

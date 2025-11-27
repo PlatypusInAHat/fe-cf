@@ -150,7 +150,9 @@ export default function OwnersManagementPage() {
           {[...Array(totalPages)].map((_, i) => (
             <Button
               key={i + 1}
-              variant={currentPage === i + 1 ? "default" ) => setCurrentPage(i + 1)}
+              variant={currentPage === i + 1 ? "default" : "outline"}
+              size="sm"
+              onClick={() => setCurrentPage(i + 1)}
             >
               {i + 1}
             </Button>

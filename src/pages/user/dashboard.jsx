@@ -29,17 +29,21 @@ export default function UserDashboard() {
     <UserLayout>
       <div className="space-y-6">
         {/* Stats Cards */}
-        <div className="grid md) => (
+        <div className="grid md:grid-cols-3 gap-4">
+          {stats.map((stat) => {
+            const Icon = stat.icon
+            return (
             <Card key={stat.label} className="p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-muted-foreground text-sm">{stat.label}</p>
                   <p className="text-3xl font-bold text-primary mt-2">{stat.value}</p>
                 </div>
-                <stat.icon className="w-12 h-12 text-primary/30" />
+                <Icon className="w-12 h-12 text-primary/30" />
               </div>
             </Card>
-          ))}
+            )
+          })}
         </div>
 
         {/* Search Button */}

@@ -1,4 +1,3 @@
-"use client"
 
 import { AdminLayout } from "@/components/layouts/admin-layout"
 import { Card } from "@/components/ui/card"
@@ -43,7 +42,8 @@ export default function AdminDashboard() {
     <AdminLayout>
       <div className="space-y-6">
         {/* Stats Cards */}
-        <div className="grid md) => (
+        <div className="grid md:grid-cols-4 gap-4">
+          {stats.map((stat) => (
             <Card key={stat.label} className="p-6">
               <div className="flex justify-between items-start">
                 <div>

@@ -36,7 +36,17 @@ export default function ProfilePage() {
                   alt={profile.name}
                   className="w-32 h-32 rounded-full object-cover border-4 border-primary"
                 />
-                <button className="absolute bottom-0 right-0 bg-primary text-primary-foreground p-2 rounded-full hover) => setProfile({ ...profile, name: e.target.value })}
+                <button className="absolute bottom-0 right-0 bg-primary text-primary-foreground p-2 rounded-full hover:bg-primary/90">
+                  <Camera className="w-4 h-4" />
+                </button>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">名前</label>
+                <input
+                  type="text"
+                  value={profile.name}
+                  onChange={(e) => setProfile({ ...profile, name: e.target.value })}
                   className="w-full px-4 py-2 rounded-lg border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>

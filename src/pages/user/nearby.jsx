@@ -67,10 +67,17 @@ export default function NearByCafesPage() {
           <div className="space-y-4">
             <div className="flex items-center gap-2 text-muted-foreground">
               <MapPin className="w-5 h-5" />
-              <span>Current Location, "2", "5", "10"].map((distance) => (
+              <span>Current Location: {currentLocation}</span>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-2">Distance Range</label>
+              <div className="flex gap-2">
+                {["1", "2", "5", "10"].map((distance) => (
                   <Button
                     key={distance}
-                    variant={selectedDistance === distance ? "default" ) => setSelectedDistance(distance)}
+                    variant={selectedDistance === distance ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSelectedDistance(distance)}
                     className={`${selectedDistance === distance ? "bg-primary text-primary-foreground" : ""}`}
                   >
                     {distance}km

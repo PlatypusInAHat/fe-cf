@@ -51,7 +51,7 @@ export default function FavoritesPage() {
     .filter((c) => filterArea === "" || c.address.includes(filterArea))
     .filter((c) => filterRating === "" || c.rating >= Number.parseFloat(filterRating))
     .sort((a, b) => {
-      if (sortBy === "recent") return 0 // Keep original order
+      if (sortBy === "recent") return 0
       if (sortBy === "rating-high") return b.rating - a.rating
       if (sortBy === "rating-low") return a.rating - b.rating
       if (sortBy === "name-asc") return a.name.localeCompare(b.name)
@@ -75,7 +75,21 @@ export default function FavoritesPage() {
           <div>
             <h1 className="text-3xl font-bold text-foreground">My Favorites</h1>
             <p className="text-sm text-muted-foreground mt-1">
-              {favorites.length} cafe{favorites.length !== 1 ? "s" ) => setSearchKeyword(e.target.value)}
+              {favorites.length} cafe{favorites.length !== 1 ? "s" : ""}
+            </p>
+          </div>
+        </div>
+
+        {/* Search & Filter Section */}
+        <Card className="p-6 mb-6 bg-card">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-2">Search</label>
+              <input
+                type="text"
+                placeholder="Search by cafe name..."
+                value={searchKeyword}
+                onChange={(e) => setSearchKeyword(e.target.value)}
                 className="w-full px-4 py-2 border border-input rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
@@ -134,11 +148,27 @@ export default function FavoritesPage() {
             </p>
           </Card>
         ) : (
-          <div className="grid grid-cols-1 md) => (
-              <Card key={cafe.id} className="overflow-hidden hover) => handleRemoveFavorite(cafe.id)}>
-                      <Heart className="w-5 h-5 fill-primary text-primary" />
-                    </Button>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredCafes.map((cafe) => (
+              <Card key={cafe.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="relative">
+                  <img
+                    src={cafe.image || "/placeholder.svg"}
+                    alt={cafe.name}
+                    className="w-full h-40 object-cover"
+                  />
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="absolute top-2 right-2 bg-white/80 hover:bg-white"
+                    onClick={() => handleRemoveFavorite(cafe.id)}
+                  >
+                    <Heart className="w-5 h-5 fill-primary text-primary" />
+                  </Button>
+                </div>
+
+                <div className="p-4">
+                  <h3 className="font-semibold text-foreground mb-2">{cafe.name}</h3>
 
                   <div className="flex items-center gap-2 mb-3">
                     <div className="flex gap-1">
