@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { OwnerLayout } from "@/components/layouts/owner-layout"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Plus, Search } from "lucide-react"
+import { OwnerLayout } from "@/components/layouts/owner-layout";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Plus, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function OwnerDashboard() {
@@ -11,7 +11,7 @@ export default function OwnerDashboard() {
     { label: "総カフェ数", value: 3, color: "text-primary" },
     { label: "稼働中カフェ数", value: 2, color: "text-green-600" },
     { label: "レビュー数", value: 24, color: "text-accent" },
-  ]
+  ];
 
   const cafes = [
     {
@@ -35,13 +35,14 @@ export default function OwnerDashboard() {
       status: "operating",
       statusLabel: "営業中",
     },
-  ]
+  ];
 
   return (
     <OwnerLayout>
       <div className="space-y-6">
         {/* Stats */}
-        <div className="grid md) => (
+        <div className="grid md:grid-cols-3 gap-4">
+          {stats.map((stat) => (
             <Card key={stat.label} className="p-6">
               <p className="text-muted-foreground text-sm">{stat.label}</p>
               <p className={`text-4xl font-bold mt-2 ${stat.color}`}>{stat.value}</p>
@@ -62,7 +63,8 @@ export default function OwnerDashboard() {
                 <Search className="w-4 h-4" />
               </Button>
             </div>
-            <Link href="/owner/cafes/new">
+
+            <Link to="/owner/cafes/new">
               <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
                 <Plus className="w-4 h-4 mr-2" />
                 新規カフェ作成
@@ -85,6 +87,7 @@ export default function OwnerDashboard() {
                   <th className="px-6 py-3 text-left text-sm font-semibold text-foreground">操作</th>
                 </tr>
               </thead>
+
               <tbody>
                 {cafes.map((cafe) => (
                   <tr key={cafe.id} className="border-b border-border hover:bg-muted/50">
@@ -93,7 +96,11 @@ export default function OwnerDashboard() {
                     <td className="px-6 py-3 text-sm text-muted-foreground">{cafe.address}</td>
                     <td className="px-6 py-3 text-sm">
                       <span
-                        className={`px-3 py-1 rounded-full text-xs font-semibold ${cafe.status === "operating" ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300" : "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300"}`}
+                        className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                          cafe.status === "operating"
+                            ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
+                            : "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                        }`}
                       >
                         {cafe.statusLabel}
                       </span>
@@ -106,7 +113,11 @@ export default function OwnerDashboard() {
                         <Button variant="ghost" size="sm">
                           編集
                         </Button>
-                        <Button variant="ghost" size="sm" className="text-destructive hover:text-destructive">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-destructive hover:text-destructive"
+                        >
                           削除
                         </Button>
                       </div>
@@ -119,5 +130,5 @@ export default function OwnerDashboard() {
         </div>
       </div>
     </OwnerLayout>
-  )
+  );
 }

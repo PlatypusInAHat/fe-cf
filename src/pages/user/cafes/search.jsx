@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { UserLayout } from "@/components/layouts/user-layout"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Star, MapPin, Clock } from "lucide-react"
-import { useState } from "react"
+import { UserLayout } from "@/components/layouts/user-layout";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Star, MapPin, Clock } from "lucide-react";
+import { useState } from "react";
 
 export default function CafeSearchPage() {
-  const [searchTerm, setSearchTerm] = useState("")
-  const [selectedArea, setSelectedArea] = useState("all")
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedArea, setSelectedArea] = useState("all");
 
   const cafes = [
     {
@@ -38,22 +38,37 @@ export default function CafeSearchPage() {
       hours: "10:00 - 19:00",
       image: "/blue-moon-cafe.jpg",
     },
-  ]
+  ];
 
   return (
     <UserLayout>
       <div className="space-y-6">
+        {/* Title */}
         <div>
           <h1 className="text-3xl font-bold mb-6 text-foreground">カフェ検索</h1>
 
           {/* Search Filters */}
           <Card className="p-6 mb-6">
-            <div className="grid md) => setSearchTerm(e.target.value)}
+            <div className="grid md:grid-cols-4 gap-4">
+              {/* Search Input */}
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  キーワード
+                </label>
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="カフェ名で検索"
                   className="w-full px-4 py-2 rounded-lg border border-border bg-card text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
+
+              {/* Select Area */}
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">エリア</label>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  エリア
+                </label>
                 <select
                   value={selectedArea}
                   onChange={(e) => setSelectedArea(e.target.value)}
@@ -65,8 +80,12 @@ export default function CafeSearchPage() {
                   <option value="tokyo">東京</option>
                 </select>
               </div>
+
+              {/* Condition Filter */}
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">条件</label>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  条件
+                </label>
                 <select className="w-full px-4 py-2 rounded-lg border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
                   <option>すべて</option>
                   <option>Wi-Fi有り</option>
@@ -74,8 +93,12 @@ export default function CafeSearchPage() {
                   <option>禁煙</option>
                 </select>
               </div>
+
+              {/* Price Filter */}
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">価格帯</label>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  価格帯
+                </label>
                 <select className="w-full px-4 py-2 rounded-lg border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
                   <option>すべて</option>
                   <option>〜500円</option>
@@ -84,36 +107,53 @@ export default function CafeSearchPage() {
                 </select>
               </div>
             </div>
-            <Button className="w-full mt-4 bg-primary hover:bg-primary/90 text-primary-foreground">検索</Button>
+
+            <Button className="w-full mt-4 bg-primary hover:bg-primary/90 text-primary-foreground">
+              検索
+            </Button>
           </Card>
 
-          {/* Results */}
+          {/* Results Count */}
           <p className="text-muted-foreground mb-4">{cafes.length}件の結果</p>
 
           {/* Cafe List */}
           <div className="space-y-4">
             {cafes.map((cafe) => (
-              <Card key={cafe.id} className="overflow-hidden hover:shadow-lg transition flex">
-                <img src={cafe.image || "/placeholder.svg"} alt={cafe.name} className="w-48 h-48 object-cover" />
+              <Card
+                key={cafe.id}
+                className="overflow-hidden hover:shadow-lg transition flex"
+              >
+                <img
+                  src={cafe.image || "/placeholder.svg"}
+                  alt={cafe.name}
+                  className="w-48 h-48 object-cover"
+                />
+
                 <div className="flex-1 p-6 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-xl font-bold text-foreground">{cafe.name}</h3>
+                    <h3 className="text-xl font-bold text-foreground">
+                      {cafe.name}
+                    </h3>
+
                     <div className="flex items-center gap-4 mt-2 text-sm text-muted-foreground">
                       <div className="flex items-center gap-1">
                         <Star className="w-4 h-4 fill-accent text-accent" />
                         <span>{cafe.rating}</span>
                         <span>({cafe.reviews}件)</span>
                       </div>
+
                       <div className="flex items-center gap-1">
                         <MapPin className="w-4 h-4" />
                         <span>{cafe.address}</span>
                       </div>
                     </div>
+
                     <div className="flex items-center gap-1 mt-2 text-sm text-muted-foreground">
                       <Clock className="w-4 h-4" />
                       <span>{cafe.hours}</span>
                     </div>
                   </div>
+
                   <Button variant="outline" className="w-24 mt-4 bg-transparent">
                     詳細
                   </Button>
@@ -124,5 +164,5 @@ export default function CafeSearchPage() {
         </div>
       </div>
     </UserLayout>
-  )
+  );
 }
