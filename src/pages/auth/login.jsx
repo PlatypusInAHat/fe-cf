@@ -9,10 +9,10 @@ import { Link } from "react-router-dom";
 export default function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [errors, setErrors] = useState>({})
+  const [errors, setErrors] = useState({})   // ✅ FIXED
 
   const validateForm = () => {
-    const newErrors= {}
+    const newErrors = {}
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
     if (!email) newErrors.email = "メールアドレスが必要です"
@@ -29,14 +29,13 @@ export default function LoginPage() {
     e.preventDefault()
     if (validateForm()) {
       console.log("Login attempt:", { email, password })
-      // TODO: Implement actual login logic
     }
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/10 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        {/* Logo */}
+
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Coffee className="w-10 h-10 text-primary" />
@@ -45,7 +44,6 @@ export default function LoginPage() {
           <p className="text-muted-foreground">あなたのアカウントにログイン</p>
         </div>
 
-        {/* Login Form */}
         <Card className="p-8">
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
@@ -55,7 +53,9 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
-                className={`w-full px-4 py-2 rounded-lg border ${errors.email ? "border-destructive bg-destructive/5" : "border-border"} bg-card text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary`}
+                className={`w-full px-4 py-2 rounded-lg border ${
+                  errors.email ? "border-destructive bg-destructive/5" : "border-border"
+                } bg-card text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary`}
               />
               {errors.email && <p className="text-destructive text-sm mt-1">{errors.email}</p>}
             </div>
@@ -67,7 +67,9 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className={`w-full px-4 py-2 rounded-lg border ${errors.password ? "border-destructive bg-destructive/5" : "border-border"} bg-card text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary`}
+                className={`w-full px-4 py-2 rounded-lg border ${
+                  errors.password ? "border-destructive bg-destructive/5" : "border-border"
+                } bg-card text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary`}
               />
               {errors.password && <p className="text-destructive text-sm mt-1">{errors.password}</p>}
             </div>
@@ -78,12 +80,12 @@ export default function LoginPage() {
           </form>
 
           <div className="mt-6 space-y-3 text-center text-sm">
-            <Link href="#forgot-password" className="block text-primary hover:underline">
+            <Link to="#forgot-password" className="block text-primary hover:underline">
               パスワードを忘れた方はこちら
             </Link>
             <p className="text-muted-foreground">
               アカウントをお持ちでない方は
-              <Link href="/auth/register" className="text-primary hover:underline ml-1">
+              <Link to="/auth/register" className="text-primary hover:underline ml-1">
                 ここから登録
               </Link>
             </p>
