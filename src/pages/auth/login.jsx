@@ -80,7 +80,7 @@ export default function LoginPage() {
           </form>
 
           <div className="mt-6 space-y-3 text-center text-sm">
-            <Link to="#forgot-password" className="block text-primary hover:underline">
+            <Link to="/auth/forgot-password" className="block text-primary hover:underline">
               パスワードを忘れた方はこちら
             </Link>
             <p className="text-muted-foreground">

@@ -15,10 +15,10 @@ export default function HomePage() {
             <span className="text-2xl font-bold text-primary">Cafe Finder</span>
           </div>
           <nav className="flex items-center gap-4">
-            <Link href="/auth/login" className="text-foreground hover:text-primary transition">
+            <Link to="/auth/login" className="text-foreground hover:text-primary transition">
               ログイン
             </Link>
-            <Link href="/auth/register" className="text-foreground hover:text-primary transition">
+            <Link to="/auth/register" className="text-foreground hover:text-primary transition">
               登録
             </Link>
           </nav>
@@ -34,12 +34,12 @@ export default function HomePage() {
           </p>
 
           <div className="flex gap-4 justify-center">
-            <Link href="/auth/login">
+            <Link to="/auth/login">
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
                 ログイン
               </Button>
             </Link>
-            <Link href="/auth/register">
+            <Link to="/auth/register">
               <Button
                 size="lg"
                 variant="outline"
@@ -75,10 +75,10 @@ export default function HomePage() {
       <footer className="border-t border-border mt-20 py-8">
         <div className="max-w-7xl mx-auto px-4 flex justify-between text-sm text-muted-foreground">
           <div className="flex gap-6">
-            <Link href="#terms" className="hover:text-primary transition">
+            <Link to="#terms" className="hover:text-primary transition">
               利用規約
             </Link>
-            <Link href="#contact" className="hover:text-primary transition">
+            <Link to="#contact" className="hover:text-primary transition">
               お問い合わせ
             </Link>
           </div>

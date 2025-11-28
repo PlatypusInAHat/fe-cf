@@ -8,6 +8,9 @@ import { AdminLayout } from "@/components/layouts/admin-layout";
 import HomePage from "./pages/index";
 import AuthLoginPage from "./pages/auth/login";
 import AuthRegisterPage from "./pages/auth/register";
+import AuthForgotPasswordPage from "./pages/auth/forgot-password";
+import AuthVerifyOTPPage from "./pages/auth/verify-otp";
+import AuthResetPasswordPage from "./pages/auth/reset-password";
 
 import UserDashboardPage from "./pages/user/dashboard";
 import UserCafesSearchPage from "./pages/user/cafes/search";
@@ -39,6 +42,9 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/auth/login" element={<AuthLoginPage />} />
       <Route path="/auth/register" element={<AuthRegisterPage />} />
+      <Route path="/auth/forgot-password" element={<AuthForgotPasswordPage />} />
+      <Route path="/auth/verify-otp" element={<AuthVerifyOTPPage />} />
+      <Route path="/auth/reset-password" element={<AuthResetPasswordPage />} />
 
       {/* USER */}
       <Route element={<UserLayout />}>

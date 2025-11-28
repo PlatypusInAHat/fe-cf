@@ -14,7 +14,7 @@ export default function RegisterPage() {
     password: "",
     confirmPassword: "",
   })
-  const [errors, setErrors] = useState>({})
+  const [errors, setErrors] = useState({})
 
   const validateForm = () => {
     const newErrors= {}
@@ -128,7 +128,7 @@ export default function RegisterPage() {
 
           <p className="mt-6 text-center text-sm text-muted-foreground">
             すでにアカウントをお持ちの方は
-            <Link href="/auth/login" className="text-primary hover:underline ml-1">
+            <Link to="/auth/login" className="text-primary hover:underline ml-1">
               ログイン
             </Link>
           </p>
